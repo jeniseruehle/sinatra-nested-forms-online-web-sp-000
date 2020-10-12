@@ -12,7 +12,11 @@ module FormsLab
     end 
     
     post '/pirate' do
-      
+      @pirate = Pirate.new(params[:pirate])
+      @ships = params[:pirate][:ships].each do |attrs|
+        Ship.new(attrs)
+      end
+      erb :'pirates/show'
     end 
 
   end
